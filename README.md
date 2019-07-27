@@ -1,6 +1,6 @@
 # mogutouERP 蘑菇头进存销管理系统
 
-mogutouERP 是一个前后端分离的微型进入存销系统，采用 Gin + Vue 开发。
+mogutouERP 是一个前后端分离的微型进存销系统，采用 Gin + Vue 开发。
 
 - 后端仓库(本仓库) https://github.com/Allenxuxu/mogutouERP
 - 前端仓库 https://github.com/Allenxuxu/mogutouERP-vue

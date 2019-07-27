@@ -134,6 +134,24 @@ docker logs mogutou
 
 ### 前端部署
 
+修改 config 目录下 prod.env.js 中的 BASE_API ，改成你的域名或者服务器公网 IP 加端口即可
+
+```
+'use strict'
+module.exports = {
+  NODE_ENV: '"production"',
+  BASE_API: '"https://xxx.xxxxx.com/api/v1"'
+}
+```
+
+进入仓库顶层目录 build 生成静态文件
+
+```bash
+npm run build
+```
+
+生成 dist 目录，将 dist 目录拷贝到服务器中，使用 nginx反向代理就可以了
+
 ### Nginx 参考配置
 
 ```

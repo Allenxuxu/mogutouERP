@@ -7,7 +7,19 @@ mogutouERP 是一个前后端分离的微型进入存销系统，采用 Gin + Vu
 
 ## 主要功能及效果图
 
+- 员工账号管理
+- 采购订单管理
+- 销售订单管理
+- 商品信息、库存管理
+- 财务信息报表
 
+> 财务信息，添加员工，商品进价管理等操作只有管理员账号可以查看并操作
+
+![image](.screenshots/index.png)
+![image](.screenshots/stock.png)
+![image](.screenshots/order.png)
+![image](.screenshots/chart1.png)
+![image](.screenshots/chart2.png)
 
 ## 本地运行使用
 

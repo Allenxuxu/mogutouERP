@@ -2,6 +2,8 @@
 
 # mogutouERP 蘑菇头进存销管理系统
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5c80672f0e8745b995a5b2e609d21ade)](https://app.codacy.com/app/Allenxuxu/mogutouERP?utm_source=github.com&utm_medium=referral&utm_content=Allenxuxu/mogutouERP&utm_campaign=Badge_Grade_Dashboard)
+
 mogutouERP 是一个前后端分离的微型进存销系统，采用 Gin + Vue 开发。
 
 - 后端仓库(本仓库) https://github.com/Allenxuxu/mogutouERP

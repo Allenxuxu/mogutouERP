@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/Allenxuxu/mogutouERP)](https://goreportcard.com/report/github.com/Allenxuxu/mogutouERP)
+
 # mogutouERP 蘑菇头进存销管理系统
 
 mogutouERP 是一个前后端分离的微型进存销系统，采用 Gin + Vue 开发。

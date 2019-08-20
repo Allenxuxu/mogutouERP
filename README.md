@@ -2,6 +2,7 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/Allenxuxu/mogutouERP)](https://goreportcard.com/report/github.com/Allenxuxu/mogutouERP)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5c80672f0e8745b995a5b2e609d21ade)](https://app.codacy.com/app/Allenxuxu/mogutouERP?utm_source=github.com&utm_medium=referral&utm_content=Allenxuxu/mogutouERP&utm_campaign=Badge_Grade_Dashboard)
+<a title="repo size in bytes" target="_blank" href="https://github.com/Allenxuxu/mogutouERP"><img src="https://img.shields.io/github/repo-size/Allenxuxu/mogutouERP.svg?style=flat"></a>
 
 mogutouERP 是一个前后端分离的微型进存销系统，采用 Gin + Vue 开发。
 

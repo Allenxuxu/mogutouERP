@@ -11,7 +11,7 @@ mogutouERP 是一个前后端分离的微型进存销系统，采用 Gin + Vue �
 
 演示地址 http://demo.mogutou.xyz
 
-账号： 11223344556
+账号： 11223344552
 
 密码： mogutou
 

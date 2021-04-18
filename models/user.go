@@ -5,8 +5,8 @@ import (
 	"encoding/hex"
 	"errors"
 
-	"github.com/jinzhu/gorm"
 	"github.com/rs/xid"
+	"gorm.io/gorm"
 )
 
 // User 用户信息
@@ -41,7 +41,7 @@ const (
 // VerifyUser 验证用户账号密码
 func VerifyUser(tel string, password string) (*User, error) {
 	var user User
-	if db.Table("users").Where("tel = ?", tel).First(&user).RecordNotFound() {
+	if db.Table("users").Where("tel = ?", tel).First(&user).Error == gorm.ErrRecordNotFound {
 		return nil, errors.New("账号不存在")
 	}
 	h := md5.New()
@@ -189,16 +189,16 @@ func GetUser(userID string) *User {
 
 // HaveUser 查询是否有此用户
 func HaveUser(userID string) bool {
-	return !db.Table("users").Where("user_id = ?", userID).First(&User{}).RecordNotFound()
+	return !(db.Table("users").Where("user_id = ?", userID).First(&User{}).Error == gorm.ErrRecordNotFound)
 }
 
 // HaveTel 查询是否有此账号
 func HaveTel(tel string) bool {
-	return !db.Table("users").Where("tel = ?", tel).First(&User{}).RecordNotFound()
+	return !(db.Table("users").Where("tel = ?", tel).First(&User{}).Error == gorm.ErrRecordNotFound)
 }
 
 func createAdminUser() error {
-	var count int
+	var count int64
 	if err := db.Table("users").Count(&count).Error; err != nil {
 		return err
 	}

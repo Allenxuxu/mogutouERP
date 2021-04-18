@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // PurchaseOrder 采购订单表

@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // Commodity 商品表
@@ -48,7 +48,7 @@ func GetCommodities() (commodities []Commodity, err error) {
 
 // HaveCommodity 查询是否有此商品
 func HaveCommodity(id string) bool {
-	return !db.Table("commodities").Where("id = ?", id).First(&Commodity{}).RecordNotFound()
+	return !(db.Table("commodities").Where("id = ?", id).First(&Commodity{}).Error == gorm.ErrRecordNotFound)
 }
 
 // GetCommodity 获取商品信息

@@ -2,9 +2,11 @@ package models
 
 import (
 	"log"
-	"time"
+	"os"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/mysql"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 var db *gorm.DB
@@ -20,16 +22,22 @@ type DBInfo struct {
 // Init 初始化
 func Init(info *DBInfo) {
 	var err error
-	db, err = gorm.Open("mysql", info.Name+":"+info.Password+"@tcp("+info.Addr+")/"+info.DBname+"?charset=utf8&parseTime=True&loc=Local")
+
+	switch os.Getenv("MOGUTOU_DB") {
+	case "mysql":
+		db, err = gorm.Open(mysql.Open(info.Name+":"+info.Password+"@tcp("+info.Addr+")/"+info.DBname+"?charset=utf8&parseTime=True&loc=Local"), &gorm.Config{})
+	default:
+		db, err = gorm.Open(sqlite.Open("mgt.db"), &gorm.Config{})
+	}
+
 	if err != nil {
 		log.Fatalln("failed to connect database, ", err)
 	}
 
-	db.DB().SetConnMaxLifetime(60 * time.Second)
 	// db.LogMode(true)
 	db.AutoMigrate(&User{}, &Role{}, &Commodity{}, &CustormerOrder{}, &CustormerGoods{}, &PurchaseOrder{}, &PurchaseGoods{})
 
-	db.Model(&Role{}).AddForeignKey("user_id", "users(user_id)", "no action", "no action")
+	// db.Model(&Role{}).AddForeignKey("user_id", "users(user_id)", "no action", "no action")
 
 	if err := createAdminUser(); err != nil {
 		log.Fatalln(err)

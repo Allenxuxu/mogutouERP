@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // CustormerOrder 客户订单表

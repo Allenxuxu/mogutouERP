@@ -17,7 +17,7 @@ func initRouter() *gin.Engine {
 	r := gin.New()
 
 	r.StaticFS("/ui", http.FS(static))
-	
+
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowAllOrigins = true
 	corsConfig.AddAllowHeaders("Authorization")

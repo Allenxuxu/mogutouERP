@@ -33,14 +33,8 @@ func main() {
 	}
 	models.Init(&info)
 
-	var listenAddr string
-	err = conf.Get("listen").Scan(&listenAddr)
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	gin.DisableConsoleColor()
 	// gin.SetMode(gin.ReleaseMode)
 	r := initRouter()
-	r.Run(listenAddr) // listen and serve on 0.0.0.0:8080
+	r.Run(":1988") // listen and serve on 0.0.0.0:8080
 }

@@ -1,9 +1,7 @@
 
 .PHONY: build_web
 build_web: 
-	cd web
-	npm install && npm run build
-	cp -rf dist/* ..
+	cd web && npm install && npm run build && cp -rf dist/* ..
 
 build_macos: build_web
 	set GOOS=darwin

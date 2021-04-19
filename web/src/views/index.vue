@@ -3,12 +3,12 @@
     <el-carousel arrow="never">
       <div v-if="device === 'desktop'">
         <el-carousel-item style="text-align: center">
-          <img src="@/assets/log/post.png" width="1000px" height="100%">
+          <img src="../assets/log/post.png" width="1000px" height="100%">
         </el-carousel-item>
       </div>
       <div v-else>
         <el-carousel-item style="text-align: center">
-          <img src="@/assets/log/log.png">
+          <img src="../assets/log/log.png">
         </el-carousel-item>
       </div>
     </el-carousel>

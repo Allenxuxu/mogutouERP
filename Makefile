@@ -9,18 +9,21 @@ build_macos: build_web
 	set GOARCH=amd64
 	mkdir -p _output/macos
 	go build -o _output/macos/mogutou main.go router.go
+	cp -rf conf _output/macos/
 
 build_linux: build_web
 	set GOOS=linux
 	set GOARCH=386
 	mkdir -p _output/linux
 	go build -o _output/linux/mogutou main.go router.go
+	cp -rf conf _output/linux/
 
 build_windows: build_web
 	set GOOS=windows
 	set GOARCH=386
 	mkdir -p _output/windows
 	go build -o _output/windows/mogutou main.go router.go
+	cp -rf conf _output/windows/
 
 .PHONY: run
 run: 

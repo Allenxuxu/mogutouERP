@@ -2,13 +2,16 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
+	"time"
 
 	"github.com/Allenxuxu/mogutouERP/models"
 	"github.com/Allenxuxu/mogutouERP/pkg/token"
 	"github.com/gin-gonic/gin"
 	config "github.com/micro/go-micro/config"
 	"github.com/micro/go-micro/config/source/file"
+	"github.com/pkg/browser"
 )
 
 func main() {
@@ -36,5 +39,11 @@ func main() {
 	gin.DisableConsoleColor()
 	// gin.SetMode(gin.ReleaseMode)
 	r := initRouter()
+	go func() {
+		time.Sleep(time.Second)
+		browser.OpenURL("http://127.0.0.1:1988/ui")
+		fmt.Println("Open: http://127.0.0.1:1988/ui")
+	}()
+
 	r.Run(":1988") // listen and serve on 0.0.0.0:8080
 }

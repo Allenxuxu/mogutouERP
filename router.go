@@ -1,14 +1,23 @@
 package main
 
 import (
+	"embed"
+	"net/http"
+
 	"github.com/Allenxuxu/mogutouERP/api"
 	"github.com/Allenxuxu/mogutouERP/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
+//go:embed index.html  log.png  static
+var static embed.FS
+
 func initRouter() *gin.Engine {
 	r := gin.New()
+
+	r.StaticFS("/ui", http.FS(static))
+	
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowAllOrigins = true
 	corsConfig.AddAllowHeaders("Authorization")

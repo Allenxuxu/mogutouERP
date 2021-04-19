@@ -7,7 +7,6 @@ import (
 	"github.com/Allenxuxu/mogutouERP/models"
 	"github.com/Allenxuxu/mogutouERP/pkg/token"
 	"github.com/gin-gonic/gin"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	config "github.com/micro/go-micro/config"
 	"github.com/micro/go-micro/config/source/file"
 )

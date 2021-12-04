@@ -9,11 +9,6 @@ mogutouERP 是一个前后端分离的微型进存销系统，采用 Gin + Vue �
 - 后端仓库(本仓库) https://github.com/Allenxuxu/mogutouERP
 - 前端仓库 https://github.com/Allenxuxu/mogutouERP-vue
 
-演示地址 http://demo.mogutou.xyz
-
-账号： 11223344552
-
-密码： mogutou
 
 ## 主要功能及效果图
 

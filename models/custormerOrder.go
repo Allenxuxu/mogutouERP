@@ -196,7 +196,7 @@ func ConfirmCustormerOrder(orderID string, freight float32) (*CustormerOrderInfo
 // CustormerOrderInfo 与客户端通信的订单信息
 type CustormerOrderInfo struct {
 	CustormerOrder
-	Goods []Commodity
+	Goods []Commodity `gorm:"-"`
 }
 
 // ListCustormerOrders 获取所有客户订单

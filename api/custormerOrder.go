@@ -89,7 +89,7 @@ func ConfirmCustormerOrder(c *gin.Context) {
 	orderID := c.Param("id")
 
 	var data struct {
-		Freight float32 `json:"freight" binding:"required"`
+		Freight *float32 `json:"freight" binding:"required"`
 	}
 	err := c.ShouldBindJSON(&data)
 	if err != nil {
@@ -97,7 +97,7 @@ func ConfirmCustormerOrder(c *gin.Context) {
 		return
 	}
 
-	orderInfo, err := models.ConfirmCustormerOrder(orderID, data.Freight)
+	orderInfo, err := models.ConfirmCustormerOrder(orderID, *data.Freight)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, response.Error{Error: err.Error()})
 		return

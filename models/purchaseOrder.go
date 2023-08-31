@@ -134,7 +134,7 @@ func ConfirmPurchaseOrder(orderID string, freight float32) (*PurchaseOrderInfo, 
 // PurchaseOrderInfo 订单信息
 type PurchaseOrderInfo struct {
 	PurchaseOrder
-	Goods []Commodity
+	Goods []Commodity `gorm:"-"`
 }
 
 // ListPurchaseOrders 所有订单

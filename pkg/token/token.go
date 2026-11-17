@@ -1,6 +1,7 @@
 package token
 
 import (
+	"crypto/rand"
 	"log"
 	"time"
 
@@ -34,8 +35,13 @@ func InitConfig(filePath string, path ...string) {
 	}
 
 	privateKey = conf.Get(path...).Bytes()
-	if err != nil {
-		log.Fatal(err)
+
+	if len(privateKey) == 0 {
+		privateKey = make([]byte, 32)
+		if _, err := rand.Read(privateKey); err != nil {
+			log.Fatal(err)
+		}
+		log.Println("warning: no jwt-key configured, a random key was generated for this run")
 	}
 }
 

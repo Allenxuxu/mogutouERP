@@ -2,6 +2,7 @@ package token
 
 import (
 	"log"
+	"os"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -22,20 +23,27 @@ type CustomClaims struct {
 // Token jwt服务
 var privateKey []byte
 
+// weakDefaultKey is the insecure signing key that was historically committed to
+// conf/jwt.json. The service refuses to start if it is still in use.
+const weakDefaultKey = "asdfasf"
+
 // InitConfig 初始化
 func InitConfig(filePath string, path ...string) {
-	fileSource := file.NewSource(
-		file.WithPath(filePath),
-	)
-	conf := config.NewConfig()
-	err := conf.Load(fileSource)
-	if err != nil {
-		log.Fatal(err)
+	if secret := os.Getenv("JWT_SECRET"); secret != "" {
+		privateKey = []byte(secret)
+	} else {
+		fileSource := file.NewSource(
+			file.WithPath(filePath),
+		)
+		conf := config.NewConfig()
+		if err := conf.Load(fileSource); err != nil {
+			log.Fatal(err)
+		}
+		privateKey = conf.Get(path...).Bytes()
 	}
 
-	privateKey = conf.Get(path...).Bytes()
-	if err != nil {
-		log.Fatal(err)
+	if len(privateKey) == 0 || string(privateKey) == weakDefaultKey {
+		log.Fatal("jwt signing key is empty or uses the known insecure default; set a strong JWT_SECRET environment variable")
 	}
 }
 
